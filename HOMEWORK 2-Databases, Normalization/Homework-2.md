@@ -7,11 +7,11 @@
 
 Идентификация Сущностей и Атрибутов: 
 
-- Площадки (Venue): 
+- Площадки (Venues): 
 
 - Мероприятия (Events): 
 
-- Посетители (Customers): 
+- Посетители (Visitors): 
 
 - Купленный билет (Tickets): (Для отслеживания, купленных билетов)
 
@@ -32,7 +32,7 @@
 
 ○ Constraints: 
 
-PK\_Venues: PRIMARY KEY (AuthorID) 
+PK\_Venues: PRIMARY KEY (VenueID) 
 
 2. Table Name: Events 
 
@@ -50,11 +50,11 @@ PK\_Venues: PRIMARY KEY (AuthorID)
 
 ○ Constraints: 
 
-- PK\_Venue: PRIMARY KEY (VenueID) 
+- PK\_Events: PRIMARY KEY (EventID) 
 
 - CHK\_Date: CHECK (DateOfTheЕvent \>= CURRENT\_TIMESTAMP) 
 
-- FK\_Events\_Venues: FOREIGN KEY (EventID) REFERENCES 
+- FK\_Events\_Venues: FOREIGN KEY (VenueID) REFERENCES 
 
 Venues(VenueID) 
 
@@ -87,9 +87,15 @@ Venues(VenueID)
 
 - TicketID: INTEGER, PK, NOT NULL, UNIQUE 
 
-- EventID: INTEGER, FK (REFERENCES Books), NOT NULL 
+- EventID: INTEGER, FK (REFERENCES Events), NOT NULL 
 
-- VisitorID: INTEGER, FK (REFERENCES Readers), NOT NULL 
+- VisitorID: INTEGER, FK (REFERENCES Visitors), NOT NULL 
+
+- Price: NUMERIC(10,2), NOT NULL
+
+- IsPaid: BOOL, NOT NULL
+
+- Date: TIMESTAMPTZ, NOT NULL
 
 ○ Constraints: 
 
@@ -98,6 +104,8 @@ Venues(VenueID)
 - FK\_Tickets\_Events: FOREIGN KEY (EventID) REFERENCES Events(EventID) 
 
 - FK\_Tickets\_Visitors: FOREIGN KEY (VisitorID) REFERENCES Visitors(VisitorID) 
+
+- CHK\_Date: CHECK (Date \>= CURRENT\_TIMESTAMP) 
 
 Взаимосвязи: 
 
