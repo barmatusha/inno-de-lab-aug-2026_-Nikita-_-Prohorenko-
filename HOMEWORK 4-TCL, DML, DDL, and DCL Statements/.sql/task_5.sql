@@ -13,7 +13,8 @@ $$ LANGUAGE plpgsql;
 
 -- 5_2 Использовать эту функцию в операторе SELECT, чтобы увидеть 
 -- потенциальный бонус для каждого сотрудника.
-select CalculateAnnualBonus(1, 25000); 
+select employeeid, CalculateAnnualBonus(employeeid, salary)
+from employees; 
 
 -- 5_3 Представление (View): Создать представление с именем 
 -- IT_Department_View, которое показывает EmployeeID, 

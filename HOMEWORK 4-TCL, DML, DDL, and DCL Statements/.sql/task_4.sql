@@ -9,7 +9,7 @@ where department = 'HR';
 
 update employees 
 set department = 'Senior IT'
-where salary > 70000.00 and department = 'IT';
+where salary > 70000.00;
 
 -- 4_3 Удалить всех сотрудников, которые не назначены ни на один проект в 
 -- таблице EmployeeProjects. Подсказка: Используйте подзапрос NOT 
@@ -35,4 +35,3 @@ values (1, 4, 8),
 select * from EmployeeProjects where projectid = 4;
 
 commit;
-ROLLBACK;
