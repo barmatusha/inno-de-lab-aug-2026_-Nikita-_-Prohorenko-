@@ -4,8 +4,24 @@ right_value = float(input("Введите второе число: "))
 
 operation = input("Введите операцию над числами (+, -, *, /, %, **): ")
 
-concat_str = str(f"{left_value} {operation} {right_value}")
+result = 0
 
-ex_result = eval(concat_str)
+if operation == "+":
+    result = (left_value + right_value)
 
-print(f"{concat_str} = {ex_result}")
+if operation == "-":
+    result = (left_value - right_value)
+
+if operation == "*":
+    result = (left_value * right_value)
+
+if operation == "/":
+    result = (left_value / right_value)
+
+if operation == "%":
+    result = (left_value % right_value)
+
+if operation == "**":
+    result = (left_value ** right_value)
+
+print(f"{left_value} {operation} {right_value} = {result}")
